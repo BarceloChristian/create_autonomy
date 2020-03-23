@@ -1,0 +1,15 @@
+<launch>
+<!--
+  https://3dclub.orbbec3d.com/t/astra-pro-rgb-camera-calibration-file/761/2
+  http://wiki.ros.org/openni_launch/Tutorials/IntrinsicCalibration
+ -->
+
+ <!-- Include official launch file and specify camera_info urls -->
+ <include file="$(find astra_camera)/launch/astrapro.launch">
+   <!-- provide arguments to that launch file -->
+   <arg name="rgb_camera_info_url"
+        value="package://ca_camera/config/rgb_16111910172.yaml" />
+   <arg name="depth_camera_info_url"
+        value="package://ca_camera/config/depth_16111910172.yaml" />
+ </include>
+</launch>
