@@ -104,8 +104,8 @@ CreateDriver::CreateDriver(ros::NodeHandle& nh, ros::NodeHandle& ph)
   joint_state_msg_.position.resize(2);
   joint_state_msg_.velocity.resize(2);
   joint_state_msg_.effort.resize(2);
-  joint_state_msg_.name[0] = "left_wheel_joint";
-  joint_state_msg_.name[1] = "right_wheel_joint";
+  joint_state_msg_.name[0] = "wheel_left_joint";
+  joint_state_msg_.name[1] = "wheel_right_joint";
   angle_msg_.header.frame_id = str_base_footprint;
 
   // Populate intial covariances
