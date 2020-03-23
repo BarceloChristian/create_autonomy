@@ -12,4 +12,13 @@ COPY --from=nvidia /etc/ld.so.conf.d/glvnd.conf /etc/ld.so.conf.d/glvnd.conf
 
 ENV NVIDIA_VISIBLE_DEVICES=all NVIDIA_DRIVER_CAPABILITIES=all
 
+USER root
+# Orbbec Astra
+RUN wget https://github.com/orbbec/ros_astra_camera/blob/master/56-orbbec-usb.rules
+RUN cp 56-orbbec-usb.rules /etc/udev/rules.d/56-orbbec-usb.rules
+# ASUS Xtion
+RUN echo -e "KERNEL == \"ttyUSB0\", MODE = \"0777\"" >> /etc/udev/rules.d/80-persistent-local-usb.rules
+RUN service udev reload
+RUN service udev restart
+
 USER $USER
