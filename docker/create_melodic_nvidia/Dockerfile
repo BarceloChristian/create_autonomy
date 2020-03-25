@@ -17,7 +17,7 @@ USER root
 RUN wget https://github.com/orbbec/ros_astra_camera/blob/master/56-orbbec-usb.rules
 RUN cp 56-orbbec-usb.rules /etc/udev/rules.d/56-orbbec-usb.rules
 # ASUS Xtion
-RUN echo -e "KERNEL == \"ttyUSB0\", MODE = \"0777\"" >> /etc/udev/rules.d/80-persistent-local-usb.rules
+RUN echo "KERNEL == \"ttyUSB0\", MODE = \"0777\"" >> /etc/udev/rules.d/80-persistent-local-usb.rules
 RUN service udev reload
 RUN service udev restart
 
