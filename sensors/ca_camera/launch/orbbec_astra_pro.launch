@@ -4,12 +4,16 @@
   http://wiki.ros.org/openni_launch/Tutorials/IntrinsicCalibration
  -->
 
- <!-- Include official launch file and specify camera_info urls -->
- <include file="$(find astra_camera)/launch/astrapro.launch">
-   <!-- provide arguments to that launch file -->
-   <arg name="rgb_camera_info_url"
-        value="package://ca_camera/config/rgb_16111910172.yaml" />
-   <arg name="depth_camera_info_url"
-        value="package://ca_camera/config/depth_16111910172.yaml" />
- </include>
+  <arg name="camera"    default="astra"/>
+  <arg name="tf_prefix" default="create_tf"/>
+
+  <!-- Include official launch file and specify camera_info urls -->
+  <include file="$(find astra_camera)/launch/astrapro.launch">
+    <!-- provide arguments to that launch file -->
+    <arg name="rgb_camera_info_url" value="package://ca_camera/config/rgb_16111910172.yaml" />
+    <arg name="depth_camera_info_url" value="package://ca_camera/config/depth_16111910172.yaml" />
+
+    <arg name="camera" value="$(arg camera)"/>
+    <arg name="tf_prefix" value="$(arg tf_prefix)"/>
+  </include>
 </launch>
