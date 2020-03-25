@@ -15,7 +15,7 @@
   * Intel RealSense R200
   * RPLidar A2
  -->
-  <arg name="laser" default="$(optenv LASER rplidar)"/>
+  <!-- <arg name="laser" default="$(optenv LASER rplidar)"/>
   <include if="$(eval str(arg('laser'))=='astra')" file="$(find ca_camera)/launch/orbbec_astra_pro.launch"/>
-  <include if="$(eval str(arg('laser'))=='xtion_pro')" file="$(find ca_camera)/launch/asus_xtion_pro.launch"/>
+  <include if="$(eval str(arg('laser'))=='xtion_pro')" file="$(find ca_camera)/launch/asus_xtion_pro.launch"/> -->
 </launch>
