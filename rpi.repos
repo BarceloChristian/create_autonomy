@@ -9,7 +9,7 @@ repositories:
     version: master
   ros_astra_camera:
     type: git
-    url: https://github.com/orbbec/ros_astra_camera
+    url: https://github.com/RoboticaUtnFrba/ros_astra_camera.git
     version: master
   RTIMULib2:
     type: git
