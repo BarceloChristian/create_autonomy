@@ -36,7 +36,7 @@ def run_dev_environment(command, ros="melodic", gazebo="9"):
     docker_args.append("--volume {}/ws/devel/:/{}/devel/".format(temp_volume, WS_NAME))
 
     # USB devices and dialout group for the real robot
-    docker_args.append("--device=\"/dev/ttyUSB*:/dev/ttyUSB*:rwm\"")
+    docker_args.append("--volume=\"/dev/bus:/dev/bus:shared\"")
     docker_args.append("--group-add=dialout")
 
     # To allow installing packages
