@@ -12,11 +12,16 @@ find_package(catkin REQUIRED
     gazebo_ros
     roscpp
     roslint
+    tf
     tf2
     tf2_ros
 )
 
 set(trajectory_actor_plugin_name TrajectoryActorPlugin)
+
+###################################
+## catkin specific configuration ##
+###################################
 
 catkin_package(
 	INCLUDE_DIRS include
@@ -29,6 +34,10 @@ catkin_package(
   CATKIN_DEPENDS
     ca_msgs
 )
+
+###########
+## Build ##
+###########
 
 include_directories(
   include
@@ -181,12 +190,15 @@ add_dependencies(world_time_publisher ${catkin_EXPORTED_TARGETS})
 target_link_libraries(world_time_publisher
 	${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
 
-
+#############
+## Install ##
+#############
 
 install(DIRECTORY
 			launch
 			media
 			models
+      test
 			worlds
 		DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 
@@ -208,5 +220,16 @@ install(TARGETS
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
+#############
+## Testing ##
+#############
+
 set(ROSLINT_CPP_OPTS "--filter=-build/c++11, -whitespace/braces")
 roslint_cpp()
+
+if(CATKIN_ENABLE_TESTING)
+  find_package(rostest REQUIRED)
+  # Tests list
+  add_rostest(test/hz.test)
+  add_rostest(test/publish.test)
+endif()
